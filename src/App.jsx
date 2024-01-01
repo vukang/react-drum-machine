@@ -1,21 +1,30 @@
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 const handleClick = (e) => {
   e.target.children[0].play();
-  console.log('setting display now...');
+
   const display = document.getElementById('display');
   const element = e.target.children[0];
   const elementLink = element.currentSrc;
   const splitted = elementLink.split('/');
   const lastFragment = splitted[splitted.length - 1];
   display.innerText = lastFragment;
+
+  display.style.borderColor = 'limegreen';
+  setTimeout(() => {
+    display.style.borderColor = '';
+  }, 90);
 };
 
 const handlePress = (e) => {
-  console.log(e.key.toUpperCase());
   let padElement = document.getElementById(e.key.toUpperCase());
-  console.log(padElement);
+
+  padElement.style.backgroundColor = 'limegreen';
+  setTimeout(() => {
+    padElement.style.backgroundColor = '';
+  }, 90);
+
   padElement?.click();
 };
 
@@ -91,4 +100,3 @@ function App() {
 }
 
 export default App;
-
